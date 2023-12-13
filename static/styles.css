@@ -1,0 +1,46 @@
+/* styles.css */
+.message {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.user {
+  background-color: #EAEAEA;
+  float: left;
+}
+
+.bot {
+  background-color: #0084FF;
+  color: white;
+  float: right;
+}
+
+/* 추가한 스타일 */
+.container {
+  max-width: 400px; /* 너비를 더 크게 조정 */
+  margin: auto;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto; /* 스크롤이 필요 없도록 제거 */
+}
+
+/* 수정된 스타일 */
+#messenger-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#title {
+  font-size: 24px; /* 타이틀 폰트 크기 조정 */
+  font-weight: bold; /* 타이틀 굵게 설정 */
+  text-align: center;
+  padding-bottom: 10px; /* 타이틀과 메시지 사이 간격 추가 */
+}

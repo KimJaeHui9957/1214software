@@ -6,36 +6,21 @@
     <title>Chatbot with GPT-3</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
-
-        #chat-container {
-            max-width: 600px;
-            margin: auto;
-        }
-
-        #bot-response {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            background-color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- 수정된 CSS 파일 로드 -->
 </head>
 <body>
-    <div id="chat-container">
-        <h1 class="mb-4">Chatbot with GPT-3</h1>
-        <div class="input-group mb-3">
+    <!-- 메신저 창을 감싸는 부모 컨테이너 -->
+    <div id="messenger-container" class="container">
+        <div id="title" class="text-center mb-4">Chat bot</div> <!-- Chat bot 타이틀 추가 -->
+        <div id="bot-response"></div> <!-- 스크롤 제거 -->
+
+        <!-- 텍스트 입력창 -->
+        <div id="input-container" class="input-group mt-3">
             <input type="text" id="user-input" class="form-control" placeholder="사용자 입력" required>
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button" onclick="getBotResponse()">대화하기</button>
             </div>
         </div>
-        <div id="bot-response"></div>
     </div>
 
     <!-- Bootstrap JS (jQuery 필요) -->
@@ -44,6 +29,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        // Enter 키 이벤트 처리
+        document.getElementById("user-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                getBotResponse();
+            }
+        });
+
         function getBotResponse() {
             var userInput = document.getElementById("user-input").value;
             var botResponseContainer = document.getElementById("bot-response");
@@ -58,8 +50,8 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    botResponseContainer.innerHTML += '<div class="alert alert-info" role="alert">사용자: ' + userInput + '</div>';
-                    botResponseContainer.innerHTML += '<div class="alert alert-info" role="alert">챗봇: ' + data.bot_response + '</div>';
+                    botResponseContainer.innerHTML += '<div class="message user">사용자: ' + userInput + '</div>';
+                    botResponseContainer.innerHTML += '<div class="message bot">챗봇: ' + data.bot_response + '</div>';
                     document.getElementById("user-input").value = '';
                 });
             }

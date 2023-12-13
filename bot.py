@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import openai
 
 app = Flask(__name__)
 
 # OpenAI API 키를 설정합니다.
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_openai_response(prompt):
     response = openai.Completion.create(
